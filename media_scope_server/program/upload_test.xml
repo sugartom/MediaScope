@@ -1,0 +1,24 @@
+<xml>
+	<app>
+		<input>
+		<name>Generate Image Detect Faces Upload</name>
+		<wwid>aaaa</wwid>
+                <cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=1|2</gvar>
+                <rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+                <timeout>7 hour</timeout>
+                <cmdpush>c2dm</cmdpush>
+		</input>
+		
+		<stage>
+			<name>UploadFaces</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>none</trigger> <preview>none</preview>
+			<config>
+				<input>GVARINPUT</input>
+			</config>
+			<notification>http://128.125.121.204:9000</notification>
+		</stage>
+	</app>
+</xml>
+

@@ -1,0 +1,14 @@
+
+		<stage>
+			<name>UploadData</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>immediate</trigger> <preview>none</preview>
+			<config>
+				<input>GVARINPUT</input>
+			</config>
+			<notification>http://128.125.121.187:9000</notification>
+		</stage>
+
+	</app>
+</xml>
+

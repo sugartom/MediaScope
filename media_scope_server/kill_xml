@@ -1,0 +1,13 @@
+
+        <stage>
+            <name>ForceExit</name> <type>SPC</type>
+                <binary>medusalet_forceexit</binary>
+                <trigger>immediate</trigger> <preview>none</preview>
+                <config>
+					<input>GVARINPUT</input>
+                </config>
+                <notification>http://128.125.121.174:9000</notification>
+        </stage>
+
+    </app>
+</xml>

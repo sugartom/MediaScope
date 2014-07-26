@@ -1,0 +1,50 @@
+<xml>
+	<app>
+		<input>
+		<name>Face Detection for Surveillance</name>
+		<wwid>ENL1</wwid>
+                <cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=</gvar>
+                <rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+                <timeout>7 hour</timeout>
+                <cmdpush>c2dm</cmdpush>
+		</input>
+
+		<stage>
+			<name>GetImages</name> <type>SPC</type>
+			<binary>medusalet_probedata</binary>		
+			<trigger>none</trigger>
+			<config>
+				<params>-type image -from 20130328 -to 20130401T180000 -limit 10</params>
+				<output>IMAGES</output>
+			</config>
+		</stage>
+		<stage>
+			<name>GetFaces</name> <type>SPC</type>
+			<binary>medusalet_facedetect</binary>		
+			<trigger>none</trigger>
+			<config>
+				<input>IMAGES</input>
+				<output>FACES</output>
+			</config>
+		</stage>
+		<stage>
+			<name>UploadFaces</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>none</trigger> <preview>none</preview>
+			<config>
+				<input>FACES</input>
+			</config>
+			<notification>http://128.125.121.204:9000</notification>
+		</stage>
+		<connector>
+			<src>GetImages</src> 
+			<dst> <success>GetFaces</success> <failure>GetImages</failure> </dst>
+		</connector>
+		<connector>
+			<src>GetFaces</src> 
+			<dst> <success>UploadFaces</success> <failure>GetImages</failure> </dst>
+		</connector>
+	</app>
+</xml>
+

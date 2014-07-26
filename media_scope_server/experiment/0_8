@@ -1,0 +1,51 @@
+ <xml>
+	<app>
+<input>
+		<name>PHOTO_UPLOAD_13494577498673648</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<wwid>ENL1</wwid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=10:331:10|12:123:10|14:82:10|8:79:10|5:71:10|19:66:10</gvar></input>
+<input>
+		<name>PHOTO_UPLOAD_13494577498673648</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<wwid>ENL2</wwid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=1:331:10|2:123:10|3:82:10|4:79:10|5:71:10|6:66:10</gvar></input>
+<input>
+		<name>PHOTO_UPLOAD_13494577498673648</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<wwid>ENL3</wwid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=8:1000:10</gvar></input>
+<input>
+		<name>PHOTO_UPLOAD_13494577498673648</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<wwid>ENL4</wwid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=12:331:10|13:123:10|15:82:10|7:79:10</gvar></input>
+
+
+
+
+		<stage>
+			<name>UploadData</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>immediate</trigger> <preview>none</preview>
+			<config>
+				<input>GVARINPUT</input>
+			</config>
+			<notification>http://128.125.121.187:9000</notification>
+		</stage>
+
+	</app>
+</xml>
+

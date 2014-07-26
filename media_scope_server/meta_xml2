@@ -1,0 +1,28 @@
+
+		<stage>
+			<name>GenerateMetadata</name> <type>SPC</type>
+			<binary>medusalet_genmetadata2</binary>		
+			<trigger>immediate</trigger> <preview>none</preview>
+			<config>
+				<params>-t 6000</params>
+				<input>GVARSTARTUID</input>
+				<output>GENMETADATA</output>
+			</config>
+		</stage>
+		<stage>
+			<name>UploadData</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>immediate</trigger> <preview>none</preview>
+			<config>
+				<input>GENMETADATA</input>
+			</config>
+			<notification>http://128.125.121.174:9000</notification>
+		</stage>
+
+		<connector>
+			<src>GenerateMetadata</src> 
+			<dst> <success>UploadData</success> <failure>GenerateMetadata</failure> </dst>
+		</connector>
+	</app>
+</xml>
+

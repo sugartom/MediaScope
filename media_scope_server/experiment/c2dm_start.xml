@@ -1,0 +1,52 @@
+<xml>
+	<app>
+		<input>
+		<name>METADATA-GENERATOR</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<wwid>ENL1</wwid>
+		<gvar>GVARINPUT=-6|5</gvar>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		</input>
+		<input>
+		<name>METADATA-GENERATOR</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<wwid>ENL2</wwid>
+		<gvar>GVARINPUT=-6|5</gvar>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		</input>
+		<input>
+		<name>METADATA-GENERATOR</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<wwid>ENL3</wwid>
+		<gvar>GVARINPUT=-6|5</gvar>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		</input>
+		<input>
+		<name>METADATA-GENERATOR</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<wwid>ENL4</wwid>
+		<gvar>GVARINPUT=-6|5</gvar>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		</input>
+
+		<stage>
+			<name>UploadData</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>immediate</trigger> <preview>none</preview>
+			<config>
+				<input>GVARINPUT</input>
+			</config>
+			<notification>http://128.125.121.187:9000</notification>
+		</stage>
+
+	</app>
+</xml>
+

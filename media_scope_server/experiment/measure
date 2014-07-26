@@ -1,0 +1,26 @@
+ <xml>
+	<app>
+
+<input>
+		<name>PHOTO_UPLOAD_13494577498673648</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<wwid>xxx</wwid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=1:500:5:3:1</gvar></input>
+
+
+		<stage>
+			<name>UploadData</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>immediate</trigger> <preview>none</preview>
+			<config>
+				<input>GVARINPUT</input>
+			</config>
+			<notification>http://128.125.121.187:9000</notification>
+		</stage>
+
+	</app>
+</xml>
+

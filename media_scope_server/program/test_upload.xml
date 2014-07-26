@@ -1,0 +1,23 @@
+<xml>
+	<app>
+		<input>
+		<name>Face Detection for Surveillance</name>
+		<wwid>gcm1</wwid>
+                <cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=</gvar>
+                <rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+                <timeout>7 hour</timeout>
+                <cmdpush>c2dm</cmdpush>
+		</input>
+
+		<stage>
+			<name>UploadFaces</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>none</trigger> <preview>none</preview>
+			<config>
+				<input>1|2|3|4|5</input>
+			</config>
+		</stage>
+	</app>
+</xml>
+

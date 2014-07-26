@@ -1,0 +1,37 @@
+<xml>
+	<app>
+		<input>
+		<name>CE1</name>
+		<wwid>arlusc</wwid>
+                <cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=</gvar>
+                <rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+                <timeout>7 hour</timeout>
+                <cmdpush>c2dm</cmdpush>
+		</input>
+
+		<stage>
+			<name>GetImages</name> <type>SPC</type>
+			<binary>medusalet_probedata</binary>		
+			<trigger>none</trigger>
+			<config>
+				<params>-file aabcdee</params>
+				<output>IMAGES</output>
+			</config>
+		</stage>
+		<stage>
+			<name>UploadImages</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>none</trigger> <preview>none</preview>
+			<config>
+				<input>IMAGES</input>
+			</config>
+			<notification>http://128.125.121.204:9000</notification>
+		</stage>
+		<connector>
+			<src>GetImages</src> 
+			<dst> <success>UploadImages</success> <failure>GetImages</failure> </dst>
+		</connector>
+	</app>
+</xml>
+

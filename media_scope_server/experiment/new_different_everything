@@ -1,0 +1,48 @@
+<xml>
+	<app>
+<input>
+		<name>PHOTO_UPLOAD_13494577498673648</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<wwid>ENL1</wwid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=1:80:10:4:1|2:79:10:4:1|3:20:10:4:1|12:6:10:4:1|13:3:10:4:1|4:85:24:3:2|14:81:24:3:2|5:90:14:8:3|6:46:14:8:3|7:20:14:8:3|8:80:13:5:4|9:79:13:5:4|24:10:13:5:4|10:96:24:3:5|11:70:24:3:5|20:11:24:3:5|15:93:18:3:6|16:82:18:3:6|19:1:18:3:6</gvar></input>
+<input>
+		<name>PHOTO_UPLOAD_13494577498673648</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<wwid>ENL2</wwid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=1:80:10:4:1|2:79:10:4:1|3:20:10:4:1|12:6:10:4:1|13:3:10:4:1|4:85:24:3:2|14:81:24:3:2|5:90:14:8:3|6:46:14:8:3|7:20:14:8:3|8:80:13:5:4|9:79:13:5:4|24:10:13:5:4|10:96:24:3:5|11:70:24:3:5|20:11:24:3:5|15:93:18:3:6|16:82:18:3:6|19:1:18:3:6</gvar></input>
+<input>
+		<name>PHOTO_UPLOAD_13494577498673648</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<wwid>ENL3</wwid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=1:80:10:4:1|2:79:10:4:1|3:20:10:4:1|12:6:10:4:1|13:3:10:4:1|4:85:24:3:2|14:81:24:3:2|5:90:14:8:3|6:46:14:8:3|7:20:14:8:3|8:80:13:5:4|9:79:13:5:4|24:10:13:5:4|10:96:24:3:5|11:70:24:3:5|20:11:24:3:5|15:93:18:3:6|16:82:18:3:6|19:1:18:3:6</gvar></input>
+<input>
+		<name>PHOTO_UPLOAD_13494577498673648</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<wwid>ENL4</wwid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<timeout>7 hour</timeout>
+		<cmdpush>c2dm</cmdpush>
+		<gvar>GVARINPUT=1:80:10:4:1|2:79:10:4:1|3:20:10:4:1|12:6:10:4:1|13:3:10:4:1|4:85:24:3:2|14:81:24:3:2|5:90:14:8:3|6:46:14:8:3|7:20:14:8:3|8:80:13:5:4|9:79:13:5:4|24:10:13:5:4|10:96:24:3:5|11:70:24:3:5|20:11:24:3:5|15:93:18:3:6|16:82:18:3:6|19:1:18:3:6</gvar></input>
+
+		<stage>
+			<name>UploadData</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>immediate</trigger> <preview>none</preview>
+			<config>
+				<input>GVARINPUT</input>
+			</config>
+			<notification>http://128.125.121.187:9000</notification>
+		</stage>
+
+	</app>
+</xml>
+
