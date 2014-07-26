@@ -5,7 +5,7 @@ Selective, timely retrieval of media content from a collection of mobile devices
 
 Perform similarity-based queries posed to a cloud search front-end, which in turn dynamically retrieves media objects from mobile devices that best match the respective queries within a given time limit.
 
-This [demo video](http://www.youtube.com/watch?v=__TODO__) MediaScope in action. 
+This ~~[demo video](http://www.youtube.com/watch?v=__TODO__)~~ TODO shows MediaScope in action. 
 
 ## Project Details
 
