@@ -18,6 +18,6 @@ media_scope_server/ws_c2dm_start.xml
 media_scope_server/timestamp
 media_scope_server/program/*.swp
 
-#media_scope_server/log/
-#media_scope_server/meta/
-#media_scope_server/query/
+media_scope_server/log/
+media_scope_server/meta/
+media_scope_server/query/
