@@ -16,7 +16,7 @@
 			<config>
 				<input>GENMETADATA</input>
 			</config>
-			<notification>http://128.125.121.174:9000</notification>
+			<notification>http://xxx.xxx.xxx.xxx:9000</notification>
 		</stage>
 
 		<connector>
