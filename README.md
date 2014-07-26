@@ -81,12 +81,12 @@ This project runs on top of the [Medusa](https://github.com/USC-NSL/Medusa) proj
 
 ### Run an example
 
-Add several small (~100 kb each) .jpeg images to the /DCIM/Camera/ (or similar) directory of your phone running the medusa-client app.
+Add several small (~100 kB each) .jpeg images to the /DCIM/Camera/ (or similar) directory of the phone running the medusa-client app.
 
 Connect the client to the medusa server.
 
-Run the gen_metada as described above.
+Run the gen_metadata.py script as described above.
 
-Visit the MediaScope.html web page, select a query type and hit submit.
+Visit the MediaScope.html web page and hit submit.
 
 If all goes well, you should see a web page with some or all of the images stored on the client phone.
