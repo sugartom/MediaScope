@@ -9,7 +9,7 @@ This ~~[demo video](http://www.youtube.com/watch?v=__TODO__)~~ TODO shows MediaS
 
 ## Project Details
 
-MediaScope was developed at [USC](http://www.usc.edu) by Yurong Jiang (USC), Xing Xu (USC), Peter Terlecky (CUNY), Tarek Abdelzaher (UIUC), Amotz Bar-Noy (CUNY), Ramesh Govindan(USC), and Matthew McCartney (USC).
+MediaScope was developed at [USC](http://www.usc.edu) by Yurong Jiang (USC), Xing Xu (USC), Peter Terlecky (CUNY), Tarek Abdelzaher (UIUC), Amotz Bar-Noy (CUNY), Ramesh Govindan (USC), and Matthew McCartney (USC).
 
 A thorough description of MediaScope can be found at the Networked Systems Lab [project page for MediaScope](http://nsl.cs.usc.edu/Projects/MediaScope) 
 
