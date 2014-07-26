@@ -50,7 +50,7 @@ This project runs on top of the [Medusa](https://github.com/USC-NSL/Medusa) proj
     * wids.info
         * The comma-delimited list of medusa user *wids* representing the the phone ID’s you wish to retrieve images from
             * Such as the Anonymized C2DM Identifier you entered when you started up the Medusa Android app
-        * ex1: *matt, bob, dan*
+        * ex1: *matt,bob,dan*
     * year.info
         * This is the year you wish to operate in
             * ex: *2014*
