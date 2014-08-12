@@ -23,10 +23,12 @@ This project runs on top of the [Medusa](https://github.com/USC-NSL/Medusa) proj
 
 * Create the MediaScope *Meta_data* table in the *medusa* database
   * ```mysql -u [mysql_username] -p[mysql password] < .../MediaScope/media_scope_server/config/createdb.sql```
+* Python libraries
+  * numpy
 * Permissions
-    * run a ```chmod -R 777``` on the the following items within .../MediaScope/media_scope_server/
+    * Create the query and log folders in the media_scope_server dir, and run a ```chmod -R 777``` on the the following items within .../MediaScope/media_scope_server/
         * query/
-        * LIRE.jar
+        * libs/
         * log/
 * MediaScope/media_scope_server/config/
     * db_account.info
