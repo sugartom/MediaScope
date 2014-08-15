@@ -63,7 +63,7 @@ This project runs on top of the [Medusa](https://github.com/USC-NSL/Medusa) proj
         * you would enter this:
             * */MediaScope/media_scope_server*
 * .../MediaScope/media_scope_server/*upload_xml*, *meta_xml2*, & *kill_xml*
-    * the <notification> tag must match the **address:port** that was configured for ../config/yx_server_port.info
+    * the <notification> tag must match the **address:port** that was configured for ../config/remote_host.info and  ../config/yx_server_port.info files
         * ex: ```xxx.xxx.xxx.xxx:9000```
 * .../MediaScope/media_scope_server/yx_server.py
     * The primary MediaScope server, it also spawns another server defined by *multi_query.py*
