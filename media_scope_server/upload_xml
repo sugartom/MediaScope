@@ -6,7 +6,7 @@
 			<config>
 				<input>GVARINPUT</input>
 			</config>
-			<notification>http://xxx.xxx.xxx.xxx:9000</notification>
+			<notification>http://68.181.99.207:9000</notification>
 		</stage>
 
 	</app>

@@ -46,13 +46,14 @@ def getfile(fl):
 				f = open(filename, 'r')
 				line = f.readline()
 				if line[:4] != 'none':
-					sql_in = "INSERT INTO Meta_data (user, uid, feature, longtitude, latitude, time, size ) VALUES (" + line[:-1] +");"
+					# sql_in = "INSERT INTO Meta_data (user, uid, feature, longtitude, latitude, time, size ) VALUES (" + line[:-1] +");"
+					sql_in = "INSERT INTO Meta_data (user, uid, feature, longtitude, latitude, time, size, car_num, face_num, light, acc_x, acc_y, acc_z, mag_x, mag_y, mag_z, angle_of_view, azimuth, pitch, roll, gps_lng, gps_lat, gps_acc, scene_tag ) VALUES (" + line[:-1] +");"
 					print "sql_a= " + sql_in
 				#	con, cur = sql_execute(sql_in)
 					cur.execute(sql_in)
 					line = f.readline()
 					while line:
-						sql_in = "INSERT INTO Meta_data (user, uid, feature, longtitude, latitude, time, size ) VALUES (" + line[:-1] +");"
+						sql_in = "INSERT INTO Meta_data (user, uid, feature, longtitude, latitude, time, size, car_num, face_num, light, acc_x, acc_y, acc_z, mag_x, mag_y, mag_z, angle_of_view, azimuth, pitch, roll, gps_lng, gps_lat, gps_acc, scene_tag ) VALUES (" + line[:-1] +");"
 						print "sql_b= " + sql_in
 						cur.execute(sql_in)
 						line = f.readline()

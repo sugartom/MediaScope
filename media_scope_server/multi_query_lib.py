@@ -1,6 +1,6 @@
 import random, urlparse, urllib, urllib2, sys, math, datetime, time, copy, os
 from urllib2 import Request, urlopen, URLError, HTTPError
-from googlemaps import GoogleMaps
+from googlemaps import Client
 import mst, kmeans_new, represent
 import json, pprint
 
@@ -25,7 +25,7 @@ def geofind(location):
 
 def select(paras):
 	a = time.time()
-	gmaps = GoogleMaps()
+	gmaps = Client(key = 'AIzaSyAdtMHxfsESr0OuVdGuseM_VW_uiDtahJY')
         address = paras['street']+", "+ paras['city']+", "+paras['state']
         latitude, longtitude = geofind(address)
         print "Location convertion: " + str(latitude) + str(longtitude)

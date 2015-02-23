@@ -1,7 +1,7 @@
 import time, os, copy, sys, random, threading, errno, datetime, copy, operator
 import BaseHTTPServer, urlparse, cgi,urllib, urllib2, multi_query_lib
 from urllib2 import Request, urlopen, URLError, HTTPError
-from googlemaps import GoogleMaps
+from googlemaps import Client
 
 HOST_NAME = open('./config/remote_host.info').read().rstrip()
 HOST_PORT = int(open('./config/multi_query_port.info').read().rstrip())
@@ -86,7 +86,7 @@ def return_result(qid, q_type):
 
         ret_val += 'Result Objects: <br> </br> <table border=1 bordercolor=#999999 width=600><tr>'
 
-        gmaps = GoogleMaps()
+        gmaps = Client(key = 'AIzaSyAdtMHxfsESr0OuVdGuseM_VW_uiDtahJY')
 	while (len(pending_photo[qid]) > 0):
 		(k, v) = max(pending_photo[qid].iteritems(), key=operator.itemgetter(1))
         	temp = k.split('=')
