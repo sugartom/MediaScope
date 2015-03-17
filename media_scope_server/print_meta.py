@@ -40,8 +40,10 @@ def create_json():
         json_data = { "photoID" : i,
                       "user" : row[0],
                       "ceddValue" : row[2],
-                      "latitude" : row[4],
-                      "longitude" : row[3],
+		      "location" : {
+				"lat" : row[4],
+				"lon" : row[3]
+		      },
                       "gpsAccuracy" : row[22],
                       "timestamp" : row[5],
                       "photoSize" : row[6],
@@ -59,19 +61,19 @@ def create_json():
 def queryGooglePlace(latSource, lngSource, aovSource, bearingSource):
 
   if latSource is None:
-    print "fuck!"
+    #print "fuck!"
     return {'visibleLandmark' : []}
 
   if lngSource is None:
-    print "fuck!"
+    #print "fuck!"
     return {'visibleLandmark' : []}
 
   if aovSource is None:
-    print "fuck!"
+    #print "fuck!"
     return {'visibleLandmark' : []}
 
   if bearingSource is None:
-    print "fuck!"
+    #print "fuck!"
     return {'visibleLandmark' : []}
 
   # Set the Places API key for your application
@@ -125,7 +127,13 @@ def queryGooglePlace(latSource, lngSource, aovSource, bearingSource):
       #perspective=math.tan((bearing-LOCATION_bearing)*math.pi/180)/math.tan((LOCATION_aov/2)*math.pi/180)
       #perspective=0.5*(perspective+1)
       #perspective=(1 - perspective)*28
-      json_Landmark['visibleLandmark'].append({'landmarkName' : place['name'], 'latitude' : str(lat2), 'longitude' : str(lng2)})
+      json_Landmark['visibleLandmark'].append({
+						'landmarkName' : place['name'], 
+						'location' : {
+							'lat' : str(lat2), 
+							'lon' : str(lng2)
+						}
+					})
       #file_out.write('\t'+place['name']+'\t'+str(lat2)+','+str(lng2)+'\t'+str(bearing)+'\t'+str(perspective)+'\n')
     #if abs(bearing - LOCATION_bearing) < LOCATION_aov :
         # print place['name'], ' : ', bearing, bearing - LOCATION_bearing
