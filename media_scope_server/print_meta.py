@@ -33,6 +33,9 @@ def create_json():
     if (row):
       #print row[0], row[1], row[2]
       if (1):
+	json_index = { "index" : { "_id" : str(i)}}
+	print json.dumps(json_index)
+	#print json.dumps(json_index, indent=4, separators=(',', ': '))
         # print i,
         # print "latitude = ", row[4], "longitude = ", row[3]
         json_Landmark = queryGooglePlace(row[4], row[3], row[16], row[17])
@@ -56,7 +59,8 @@ def create_json():
                       "roll" : row[19],
                       "landmarkMeta" : json_Landmark
                       }
-        print json.dumps(json_data, indent=4, separators=(',', ': '))
+        #print json.dumps(json_data, indent=4, separators=(',', ': '))
+	print json.dumps(json_data)	
 
 def queryGooglePlace(latSource, lngSource, aovSource, bearingSource):
 
