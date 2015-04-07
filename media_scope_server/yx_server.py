@@ -39,6 +39,7 @@ def getfile(fl):
 			filename = name_uids[0]+'='+uids[i]#+'='+name_uids[-1] 
 			ext = download_url.split('.')[-1]
 			download_url = "http://"+download_url 
+			image_name = "IMG" + download_url.split('IMG')[-1]				#========================================
 			
 			if ext == 'txt':
 				filename = './meta/' + filename
@@ -62,18 +63,18 @@ def getfile(fl):
 				f.close()
 			else:
 				flag = 1
-				filename = './query/'+filename
-				print "Downloaded filepath: " + filename					
+				image_name = './query/'+image_name			# used to be "filename" here========================================
+				print "Downloaded filepath: " + image_name					
 #				sql_get = ("select size from Meta_data where user = {0} and uid = {1}").format(name.uids[0], uids[i])
 #				cur.execute(sql_get)
 #				dat = cur.fetchone()
-				urllib.urlretrieve(download_url, filename)
+				urllib.urlretrieve(download_url, image_name)
 				#SIZE = 0
-				print "Got file now !!! " + filename
+				print "Got file now !!! " + image_name
 				sql_up = ("update Meta_data set size = 0 where user = {0} and uid = {1}").format(name_uids[0],uids[i])
 				print sql_up
 #				cur.execute(sql_up)
-				time_log.s += str(time.time()) + "\t(Y)fetched {0} \r\n".format(filename)
+				time_log.s += str(time.time()) + "\t(Y)fetched {0} \r\n".format(image_name)
 		con.commit()
 		con.close()
 	else:

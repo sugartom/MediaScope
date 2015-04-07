@@ -15,6 +15,24 @@ DB_HOST = open('./config/db_host.info').read().rstrip()
 
 YEAR = int(open('./config/year.info').read().rstrip())
 
+def select_id(paras):
+	img_id = paras['ID']
+	query_cmd = "select user, uid from Meta_data where file_name = \"" + img_id + "\";"
+	print "multi_query_lib: select_id: query_cmd = " + query_cmd
+	con, cur = sql_execute(query_cmd)
+	data = []
+	while True:
+		dat = cur.fetchone()
+		if dat == None:
+			break
+		data.append(dat)
+	result = {}
+	if (len(data) > 0 ):
+		result[data[0][0]] = str(data[0][1]) + ":100:10"
+	for i in result:
+		result[i] = result[i][:-1]
+	return result
+
 def geofind(location):
 	add = urllib2.quote(location)
 	geocode_url = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false&region=uk" % add
@@ -244,4 +262,3 @@ def sql_execute( sqlstmt):
 		print "sql_execute error"
 	return con, cur
 	
-

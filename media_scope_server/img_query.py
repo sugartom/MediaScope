@@ -4,7 +4,7 @@ from urllib2 import Request, urlopen, URLError, HTTPError
 from googlemaps import Client
 
 HOST_NAME = open('./config/remote_host.info').read().rstrip()
-HOST_PORT = int(open('./config/multi_query_port.info').read().rstrip())
+HOST_PORT = 9999 # int(open('./config/multi_query_port.info').read().rstrip())
 C2DM_M_S = open('./config/c2d_messaging_system.info').read().rstrip()
 MSS_PATH = open('./config/media_scope_server_path.info').read().rstrip()
 
@@ -12,31 +12,16 @@ active_queries = {'0' : 'Empty Query Set'}
 pending_task = {}
 pending_photo = {}
 
-def kill_users(users):
-        f = open('kill_xml','r')
-        kill_xml_file = ''
-
-        for user, pending_list in users.iteritems():
-                task_id = "KILL_STAGE_" + multi_query_lib.unique_id()
-                kill_xml_file += multi_query_lib.generate_task_file(task_id, user, "{"+pending_list[0]+"}")
-                kill_xml_file += f.read()
-                if multi_query_lib.send_task([((C2DM_M_S + '_upload.xml'), kill_xml_file)]) == -1:
-			print "Send kill task failed"
-        print "kill: "+str(users)
-
 def accept_query(qid, paras):
         global pending_photo, pending_task
         pending_task[qid] = {}
 	pending_photo[qid] = {}
-	#f = open('timestamp','w')
-	#a = time.time()
-	(result, meta) = multi_query_lib.select(paras)
-	#b = time.time()
-	#f.write(str(b-a))
-	#f.close()
+
+	result = multi_query_lib.select_id(paras)
+
         print "accept_query: result returned from select =========================="
         print "result = "+str(result)
-        print "meta = "+str(meta)
+        # print "meta = "+str(meta)
         if (len(result)) == 0:
                 return
         f = open('upload_xml','r')
@@ -63,7 +48,7 @@ def accept_query(qid, paras):
         print "Pending photos: "+str(pending_photo)
         print "Pending tasks: "+str(pending_task)
 
-def return_result(qid, q_type):
+def return_result(qid):
 	global pending_photo, pending_task, active_queries
 	
 	temp_pending_photo = copy.deepcopy(pending_photo)
@@ -73,8 +58,6 @@ def return_result(qid, q_type):
                         pending_task[qid][names[0]].remove(names[1])
                         if (len(pending_task[qid][names[0]]) == 1):
                         	del pending_task[qid][names[0]]
-	#if len(pending_task[qid]) > 0:
-		#kill_users(pending_task[qid])
 	
 	ret_val = ''
 	if (len(pending_photo[qid]) == 0):
@@ -83,13 +66,7 @@ def return_result(qid, q_type):
 		del pending_task[qid]
 		del active_queries[qid]
 		return ret_val
-	#print "q_type = " + str(q_type) # q_type = 0U
-	if (q_type[0] == '0'):
-		ret_val += "Query Object: <br> </br><img src=\"data:image/jpg;base64,{0}\" width=205><br> </br>".format(open('QUERY_IMAGE/' + q_type[1:]).read().encode('base64').replace('\n', ''))
 
-        ret_val += 'Result Objects: <br> </br> <table border=1 bordercolor=#999999 width=600><tr>'
-
-        gmaps = Client(key = 'AIzaSyAdtMHxfsESr0OuVdGuseM_VW_uiDtahJY')
 	while (len(pending_photo[qid]) > 0):
 		(k, v) = max(pending_photo[qid].iteritems(), key=operator.itemgetter(1))
         	temp = k.split('=')
@@ -100,20 +77,6 @@ def return_result(qid, q_type):
                 	ret_val += "<img src=\"data:image/jpg;base64,{0}\" width=205>".format(open('query/' + k).read().encode('base64').replace('\n', ''))
                 else:
                 	ret_val += "<b>Warning:</b> Photo failed to be uploaded on time."
-                #temp = v.split(',')
-                #dd = datetime.datetime.fromtimestamp(long(temp[len(temp) - 2])/1000)
-                #tt = dd.isoformat(' ')
-                #destination = "a, b, c, d, e, f, g"
-                #destination = gmaps.latlng_to_address(float(temp[3]), float(temp[2]))
-                #dest = destination.split(', ')
-                #ret_val += "<p><b><pre>Location: </b>{0}</pre></p>".format(dest[0])
-		ret_val += "<p><b><pre>Credit: </b>{0}</pre></p>".format(str(pending_photo[qid][k]))
-                #del dest[0]
-                #dest[-2] += ', ' + dest[-1]
-                #del dest[-1]
-   		#for dests in dest:
-                #	ret_val += "<p><pre>            {0}</pre></p>".format(dests)
-		ret_val += "<p><b><pre>Name: </b>{0}</pre></p>".format(k)
 		del pending_photo[qid][k]
 	ret_val += "</td>"
         del pending_photo[qid]
@@ -134,7 +97,7 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 	def do_GET(self):
 		url_content = urlparse.urlparse(self.path)
 		query = url_content.query
-		print "do_GET: query from webpage =========================="
+		print "do_GET: query from web browser =========================="
 		print query
 		path = url_content.path
 		if path != MSS_PATH:
@@ -149,20 +112,36 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 		self.send_header("Content-type", "text/html")
 		self.end_headers()
 		self.wfile.write("<html><body>")
-#		self.wfile.write("Query is: " + str(paras)+"\r\n")
+		# self.wfile.write("Requested image ID is: " + str(paras)+"\r\n")
 		if 'query_id' in paras:
-			self.wfile.write(return_result(paras['query_id'], paras['type']+paras['option2']))
+			self.wfile.write(return_result(paras['query_id']))
 		else:
 			query_id = str(int(max(active_queries)) + 1)
 			print "accepted query (" + str(query_id)+")"
 			active_queries[query_id] = query
-			#f = open('timestamp','w')
-			#a = time.time()
+
 			accept_query(query_id, paras)
-			#b = time.time()
-			#f.write(str(b-a))
-			#f.close()
-			self.wfile.write("<Meta http-equiv=\"Refresh\" Content=\"" + paras['deadline'] + "; url=http://" + HOST_NAME + ":" + str(HOST_PORT) + MSS_PATH + "?" + query + "&query_id=" + query_id + "\">")
+
+			# self.wfile.write("<Meta http-equiv=\"Refresh\" Content=\"" + "10" + "; url=http://" + HOST_NAME + ":" + str(HOST_PORT) + MSS_PATH + "?" + query + "&query_id=" + query_id + "\">")
+			timer = 0
+			rev_file_name = "NULL"
+			if (len(paras["ID"].split('-')) > 1):
+				rev_file_name = paras["ID"].split('-')[0] + paras["ID"].split('-')[-1]
+				
+			while (True):
+				if (os.path.exists("query/" + paras["ID"])):
+					self.wfile.write("http://" + HOST_NAME + "/tom_www/MediaScope/media_scope_server/query/" + paras["ID"])
+					break
+				elif (os.path.exists("query/" + rev_file_name)):
+					self.wfile.write("http://" + HOST_NAME + "/tom_www/MediaScope/media_scope_server/query/" + rev_file_name)
+					break
+				timer += 1
+				if (timer >= int(paras["timeout"])):
+					self.wfile.write("timeout")
+					break
+				print "Looking for the image .......... " + str(timer)
+				time.sleep(1)
+
 		self.wfile.write("</body></html>")		
 
 if __name__ == '__main__':
@@ -172,5 +151,4 @@ if __name__ == '__main__':
 		httpd.serve_forever()
 	except KeyboardInterrupt:
 		pass
-	
 	httpd.server_close()
