@@ -132,6 +132,10 @@ def generate_task_file(task_id, user, file_list):
 def send_task(d):
         URL='http://' + ADDRESS_PORT
         req = urllib2.Request(URL, urllib.urlencode(d))
+	print "===hyt test:==="
+	print URL
+	print d
+	print "==end of hyt test==="
         try:
                 u = urllib2.urlopen(req)
         except URLError, e:
