@@ -1,0 +1,39 @@
+<xml>
+	<app>
+		<input>
+		<name>METADATA-GENERATOR</name>
+		<rrid>AKIAIHXRZUV7K7Q7JZ7A</rrid>
+		<rrkey>ZDijBdROJrc6TViueBWYVhD5o8hSVzv9Civaj+Zl</rrkey>
+		<wwid>tom</wwid>
+		<gvar>GVARSTARTUID=1</gvar>
+		<timeout>7 hour</timeout>
+		<cmdpush>ws_c2dm</cmdpush>
+		</input>
+
+		<stage>
+			<name>GenerateMetadata</name> <type>SPC</type>
+			<binary>medusalet_genmetadata2</binary>		
+			<trigger>immediate</trigger> <preview>none</preview>
+			<config>
+				<params>-t 6000</params>
+				<input>GVARSTARTUID</input>
+				<output>GENMETADATA</output>
+			</config>
+		</stage>
+		<stage>
+			<name>UploadData</name> <type>SPC</type>
+			<binary>medusalet_uploadprioritydata</binary>		
+			<trigger>immediate</trigger> <preview>none</preview>
+			<config>
+				<input>GENMETADATA</input>
+			</config>
+			<notification>http://68.181.99.207:9000</notification>
+		</stage>
+
+		<connector>
+			<src>GenerateMetadata</src> 
+			<dst> <success>UploadData</success> <failure>GenerateMetadata</failure> </dst>
+		</connector>
+	</app>
+</xml>
+
