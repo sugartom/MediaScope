@@ -23,7 +23,7 @@ def create_json():
   cursor = db.cursor()
 
   # Execution of a SQL statement
-  query = ("select * from Meta_data")
+  query = ("select distinct * from Meta_data")
   #print query
   cursor.execute(query)
 
