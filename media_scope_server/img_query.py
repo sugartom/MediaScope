@@ -4,7 +4,7 @@ from urllib2 import Request, urlopen, URLError, HTTPError
 from googlemaps import Client
 
 HOST_NAME = open('./config/remote_host.info').read().rstrip()
-HOST_PORT = 9999 # int(open('./config/multi_query_port.info').read().rstrip())
+HOST_PORT = int(open('./config/img_query_port.info').read().rstrip())
 C2DM_M_S = open('./config/c2d_messaging_system.info').read().rstrip()
 MSS_PATH = open('./config/media_scope_server_path.info').read().rstrip()
 
@@ -147,6 +147,7 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 if __name__ == '__main__':
 	server_class = BaseHTTPServer.HTTPServer
 	httpd = server_class((HOST_NAME, HOST_PORT), MyHandler)
+	print time.asctime(), "Server Starts - %s:%s" % (HOST_NAME, HOST_PORT)
 	try:
 		httpd.serve_forever()
 	except KeyboardInterrupt:

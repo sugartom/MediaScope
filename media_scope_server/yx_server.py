@@ -161,7 +161,7 @@ if __name__ == '__main__':
 		httpd.serve_forever()
 	except KeyboardInterrupt:
 		pass
-	thr.stopIt = True
+#	thr.stopIt = True
 	httpd.server_close()
 
 	mqsproc.terminate()
