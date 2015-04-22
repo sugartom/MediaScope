@@ -6,15 +6,6 @@ import sys
 import time
 import utm
 
-pretty = False
-
-if len(sys.argv) > 1:
-	if sys.argv[1] == 'y':
-		pretty = True
-
-timestr = time.strftime("%Y%m%d-%H%M%S")
-f = open('./combined_meta/' + timestr + '.txt', 'w')
-
 def sql_execute():
 
 	DBNAME = "medusa"
@@ -40,7 +31,9 @@ def sql_execute():
 
 	return cursor, numrows
 
-def create_json():
+def create_json(fileName):
+
+	f = open(fileName, 'w')
 
 	cursor, numrows = sql_execute()
 
@@ -90,7 +83,9 @@ def create_json():
 				f.write(json.dumps(json_data, sort_keys=True) + '\n')
 
 		else:
-			print "fetchone error!"
+			print "error: fetchone error!"
+
+	f.close()
 
 # Need to be revised...
 def calibrateBearing(inputBearing):
@@ -167,6 +162,39 @@ def queryGooglePlace(latSource, lngSource, aovSource, bearingSource):
 
 	return json_Landmark
 
-if __name__ == '__main__':	
-	create_json()
-	f.close()
+def upload_json(fileName):
+
+	if os.path.exists(fileName):
+		f = open(fileName, 'r')
+
+		ES_ACCOUNT = (open('./config/es_host-port.info').read().rstrip()).split(':')
+		ES_HOST = ES_ACCOUNT[0]
+		ES_PORT = int(ES_ACCOUNT[1])
+
+		es = Elasticsearch([{'host' : ES_HOST, 'port' : ES_PORT}])
+
+		doc = f.read()
+
+		res = es.bulk(index = "medusa", doc_type = "meta", body = doc)
+
+		if res['errors'] == False:
+			print "upload meta succeed!"
+		else:
+			print "upload meta failed..."
+
+	else:
+		print "error: file %s doesn't exist!" % (fileName)
+
+if __name__ == '__main__':
+
+	pretty = False
+
+	if len(sys.argv) > 1:
+		if sys.argv[1] == 'y':
+			pretty = True
+
+	timestr = time.strftime("%Y%m%d-%H%M%S")
+	fileName = './combined_meta/' + timestr + '.txt'
+
+	create_json(fileName)
+	upload_json(fileName)
