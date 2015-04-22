@@ -21,3 +21,4 @@ My_unversioned_stuff/
 media_scope_server/log/
 media_scope_server/meta/
 media_scope_server/query/
+media_scope_server/combined_meta/
