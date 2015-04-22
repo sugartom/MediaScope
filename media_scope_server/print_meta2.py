@@ -5,6 +5,8 @@ import json
 import sys
 import time
 import utm
+from elasticsearch import Elasticsearch
+import os
 
 def sql_execute():
 
@@ -171,7 +173,7 @@ def upload_json(fileName):
 		ES_HOST = ES_ACCOUNT[0]
 		ES_PORT = int(ES_ACCOUNT[1])
 
-		es = Elasticsearch([{'host' : ES_HOST, 'port' : ES_PORT}])
+		es = Elasticsearch([{'host' : '204.57.3.135', 'port' : 9200}])
 
 		doc = f.read()
 
