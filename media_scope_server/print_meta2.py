@@ -173,7 +173,7 @@ def upload_json(fileName):
 		ES_HOST = ES_ACCOUNT[0]
 		ES_PORT = int(ES_ACCOUNT[1])
 
-		es = Elasticsearch([{'host' : '204.57.3.135', 'port' : 9200}])
+		es = Elasticsearch([{'host' : ES_HOST, 'port' : ES_PORT}])
 
 		doc = f.read()
 
